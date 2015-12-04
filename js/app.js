@@ -42,12 +42,10 @@ var ViewModel = function() {
 				cardsSelected.push(that.cards()[i].num());
 			}
 
-			/*
-			if(cardsSelected.length == 1) {
-				console.log('cardsSelected is ' + cardsSelected.length);
-				break;
-			}
-			*/
+		}
+
+		if(cardsSelected.length > 2) {
+			that.deSelectAll();
 		}
 
 		if(cardsSelected.length < 2) {
@@ -56,10 +54,14 @@ var ViewModel = function() {
 
 		if(cardsSelected[0] === cardsSelected[1]) {
 			console.log("matched");
-			that.deSelectAll();
+			setTimeout(function(){
+				that.deSelectAll();
+			}, 1000);
 		} else {
 			console.log("unmatched");
-			that.deSelectAll();
+			setTimeout(function(){
+				that.deSelectAll();
+			}, 1000);
 		}
 	};
 

@@ -11,7 +11,7 @@
 		<main>
 			<div class="game-container" data-bind="foreach: cards">
 				<!--<div class="front"></div>-->
-				<div class="back" data-bind="text: num, click: $parent.checkSelected"></div>
+				<div class="card-item" data-bind="text: num, click: $parent.checkSelected, css: { selected: selected() }"></div>
 			</div>
 		</main>
 
