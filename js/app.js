@@ -7,7 +7,7 @@ var Card = function(num, hexColor) {
 	that.color = hexColor;
 	that.selected = ko.observable(false);
 	that.select = function() {
-		console.log(that.num() + " selected");
+		//console.log(that.num() + " selected");
 		that.selected(true);
 	};
 	that.unselect = function() {
@@ -30,10 +30,11 @@ var ViewModel = function() {
 		this.cards.push(new Card(i, colors[i]));
 	}
 
+	// Selects a card and checks if it matches
 	this.checkSelected = function(card) {
 		var cardsSelected = [];
 
-		console.log(card);
+		//console.log(card);
 		card.select();
 
 		for(var i=0; i<that.cards().length; i++) {
@@ -58,20 +59,31 @@ var ViewModel = function() {
 		if(cardsSelected[0] === cardsSelected[1]) {
 			console.log("matched");
 			setTimeout(function(){
-				that.deSelectAll();
-			}, 1000);
+				that.removeCards(cardsSelected[0]);
+
+				// If there are no more cards, reveal the winner message
+				if(that.cards().length === 0) {
+					document.getElementsByClassName('winner-message')[0].className = document.getElementsByClassName('winner-message')[0].className.replace('hidden', '');
+				}
+			}, 800);
 		} else {
 			console.log("unmatched");
 			setTimeout(function(){
 				that.deSelectAll();
-			}, 1000);
+			}, 800);
 		}
 	};
 
+	// Deselects all cards
 	this.deSelectAll = function() {
 		for(var i=0; i<that.cards().length; i++) {
 			that.cards()[i].unselect();
 		}
+	};
+
+	// Remove all cards with the ID number passed in
+	this.removeCards = function(number) {
+		that.cards.remove(function(item) { return item.num() === number});
 	};
 
 };
