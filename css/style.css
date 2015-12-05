@@ -1,3 +1,7 @@
+.fa {
+	font-size: 2.2em;
+}
+
 .card-container {
 	position: relative;
 	display: inline-block;
@@ -9,8 +13,6 @@
 	width: 80px;
 	height: 120px;
 	background-color: #aaa;
-	text-align: center;
-	line-height: 120px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -19,8 +21,11 @@
 }
 
 .back {
-	width: 80px;
-	height: 120px;
+	width: 78px;
+	height: 118px;
+	text-align: center;
+	line-height: 118px;
+	border: solid 1px #000;
 }
 
 .selected {

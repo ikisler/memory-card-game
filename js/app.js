@@ -1,10 +1,11 @@
 
 
-var Card = function(num, hexColor) {
+var Card = function(num, hexColor, iconSelected) {
 	var that = this;
 
 	that.num = ko.observable(num);
 	that.color = hexColor;
+	that.icon = iconSelected;
 	that.selected = ko.observable(false);
 	that.select = function() {
 		//console.log(that.num() + " selected");
@@ -15,7 +16,29 @@ var Card = function(num, hexColor) {
 	};
 };
 
-var colors = ['#00f', '#f00', '#3c3', '#ff6', '#90c'];
+var colors = ['#00f', '#f00', '#3c3', '#aa0', '#90c'];
+var icons = [
+	'fa fa-heart',
+	'fa fa-star',
+	'fa fa-bolt',
+	'fa fa-key',
+	'fa fa-cog',
+	'fa fa-wrench',
+	'fa fa-moon-o',
+	'fa fa-music',
+	'fa fa-tree',
+	'fa fa-coffee',
+	'fa fa-puzzle-piece',
+	'fa fa-rocket',
+	'fa fa-leaf',
+	'fa fa-bell',
+	'fa fa-beer',
+	'fa fa-diamond',
+	'fa fa-shield',
+	'fa fa-cloud',
+	'fa fa-tint',
+	'fa fa-flask'
+];
 
 var ViewModel = function() {
 	var that = this;
@@ -26,8 +49,8 @@ var ViewModel = function() {
 
 	for(var i=0; i<(this.numberOfCards/2); i++) {
 
-		this.cards.push(new Card(i, colors[i]));
-		this.cards.push(new Card(i, colors[i]));
+		this.cards.push(new Card(i, colors[i], icons[i]));
+		this.cards.push(new Card(i, colors[i], icons[i]));
 	}
 
 	// Selects a card and checks if it matches
