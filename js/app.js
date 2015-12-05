@@ -1,9 +1,10 @@
 
 
-var Card = function(num) {
+var Card = function(num, hexColor) {
 	var that = this;
 
 	that.num = ko.observable(num);
+	that.color = hexColor;
 	that.selected = ko.observable(false);
 	that.select = function() {
 		console.log(that.num() + " selected");
@@ -14,6 +15,8 @@ var Card = function(num) {
 	};
 };
 
+var colors = ['#00f', '#f00', '#3c3', '#ff6', '#90c'];
+
 var ViewModel = function() {
 	var that = this;
 
@@ -23,8 +26,8 @@ var ViewModel = function() {
 
 	for(var i=0; i<(this.numberOfCards/2); i++) {
 
-		this.cards.push(new Card(i));
-		this.cards.push(new Card(i));
+		this.cards.push(new Card(i, colors[i]));
+		this.cards.push(new Card(i, colors[i]));
 	}
 
 	this.checkSelected = function(card) {

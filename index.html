@@ -10,8 +10,10 @@
 	<body>
 		<main>
 			<div class="game-container" data-bind="foreach: cards">
-				<!--<div class="front"></div>-->
-				<div class="card-item" data-bind="text: num, click: $parent.checkSelected, css: { selected: selected() }"></div>
+				<div class="card-container">
+					<div class="back" data-bind="style: { backgroundColor: color }"></div>
+					<div class="front" data-bind="text: num, click: $parent.checkSelected, css: { selected: selected() }"></div>
+				</div>
 			</div>
 		</main>
 
