@@ -16,7 +16,7 @@ var Card = function(num, hexColor, iconSelected) {
 	};
 };
 
-var colors = ['#00f', '#f00', '#3c3', '#aa0', '#90c'];
+var colors = ['#00f', '#f00', '#3c3', '#aa0', '#90c', '#ef00ff', '#000', '#070'];
 var icons = [
 	'fa fa-heart',
 	'fa fa-star',
@@ -25,8 +25,8 @@ var icons = [
 	'fa fa-cog',
 	'fa fa-wrench',
 	'fa fa-moon-o',
-	'fa fa-music',
 	'fa fa-tree',
+	'fa fa-music',
 	'fa fa-coffee',
 	'fa fa-puzzle-piece',
 	'fa fa-rocket',
@@ -40,18 +40,50 @@ var icons = [
 	'fa fa-flask'
 ];
 
+function test(n) {
+	for(var i=0; i<n; i++) {
+		console.log(colors[i%colors.length]);
+	}
+}
+
+// Fisher-Yates Shuffle Algorithm
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 var ViewModel = function() {
 	var that = this;
 
-	//this.cardArray = [];
-	this.numberOfCards = 10;
+	this.numberOfCards = 52;
 	this.cards = ko.observableArray([]);
 
 	for(var i=0; i<(this.numberOfCards/2); i++) {
+		// If there are more than 20 pairs, randomize the colors to prevent doubles
+		if(i%20 === 0) {
+			colors = shuffle(colors);
+		}
 
-		this.cards.push(new Card(i, colors[i], icons[i]));
-		this.cards.push(new Card(i, colors[i], icons[i]));
+		this.cards.push(new Card(i, colors[i%colors.length], icons[i%icons.length]));
+		this.cards.push(new Card(i, colors[i%colors.length], icons[i%icons.length]));
 	}
+
+	// Once all the cards are in the array, shuffle the array
+	this.cards(shuffle(that.cards()));
 
 	// Selects a card and checks if it matches
 	this.checkSelected = function(card) {
@@ -88,12 +120,12 @@ var ViewModel = function() {
 				if(that.cards().length === 0) {
 					document.getElementsByClassName('winner-message')[0].className = document.getElementsByClassName('winner-message')[0].className.replace('hidden', '');
 				}
-			}, 800);
+			}, 400);
 		} else {
 			console.log("unmatched");
 			setTimeout(function(){
 				that.deSelectAll();
-			}, 800);
+			}, 400);
 		}
 	};
 
