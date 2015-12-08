@@ -1,0 +1,108 @@
+$basicFont: arial, sans-serif;
+
+$headerBgColor: #444;
+$headerTextColor: #fff;
+$headerSize: 2.5em;
+
+$linkColor: #fff;
+
+$cardHeight: 120px;
+$cardWidth: 80px;
+$cardBorder: solid 1px #000;
+$iconSize: 2.2em;
+$marginBetweenCards: 5px;
+$cardTransition:  opacity 0.5s;
+
+$centerMargin: 0 auto;
+$sectionsPadding: 10px 20px;
+
+/*** General Set Up ***/
+body {
+	font-family: $basicFont;
+	margin: $centerMargin;
+}
+
+header, main, footer {
+	padding: $sectionsPadding;
+}
+
+header, footer {
+	background-color: $headerBgColor;
+	color: $headerTextColor;
+}
+
+/*** Header ***/
+header {
+	text-align: center;
+}
+
+h1 {
+	font-size: $headerSize;
+}
+
+/*** Main ***/
+.game-container {
+	margin: 20px auto;
+}
+
+.cards-left, .number-selector-container {
+	display: inline-block;
+}
+
+.cards-left {
+	font-weight: bold;
+	width: 50%;
+}
+
+select {
+	font-size: 1em;
+	padding: 4px;
+	border-radius: 5px;
+}
+
+/*** Footer ***/
+footer {
+	text-align: right;
+}
+
+a {
+	color: $linkColor;
+}
+
+/*** Cards ***/
+.fa {
+	font-size: $iconSize;
+}
+
+.card-container {
+	position: relative;
+	display: inline-block;
+	margin: $marginBetweenCards;
+}
+
+.front {
+	width: $cardWidth;
+	height: $cardHeight;
+	background-color: #aaa;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transition: $cardTransition;
+	transition: $cardTransition;
+}
+
+.back {
+	width: $cardWidth - 2px;
+	height: $cardHeight - 2px;
+	text-align: center;
+	line-height: $cardHeight - 2px;
+	border: $cardBorder;
+}
+
+.selected {
+	opacity: 0;
+}
+
+.hidden {
+	display: none;
+}

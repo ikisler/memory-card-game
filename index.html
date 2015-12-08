@@ -9,19 +9,32 @@
 		<title>Memory Card Game</title>
 	</head>
 	<body>
+		<header>
+			<h1>Memory Card Game</h1>
+		</header>
 		<main>
-			<div>Cards Left: <span data-bind="text: cards().length"></span></div>
-			<div class="game-container" data-bind="foreach: cards">
-				<div class="card-container">
-					<div class="back" data-bind="style: { color: color }, css: icon"></div>
-					<div class="front" data-bind="click: $parent.checkSelected, css: { selected: selected() }"></div>
+			<section>
+				<div class="cards-left">Cards Left: <span data-bind="text: cards().length"></span></div>
+				<div class="number-selector-container">
+					<select data-bind="options: $root.numberOfPairsArray, optionsCaption: 'Number of Pairs', value: $root.numberOfPairs"></select>
 				</div>
-			</div>
-			<div class="winner-message hidden">You won!</div>
-			<div class="number-selector-container">
-				<select data-bind="options: $root.numberOfPairsArray, optionsCaption: 'Number of Pairs', value: $root.numberOfPairs"></select>
-			</div>
+
+				<div class="game-container" data-bind="foreach: cards">
+					<div class="card-container">
+						<div class="back" data-bind="style: { color: color }, css: icon"></div>
+						<div class="front" data-bind="click: $parent.checkSelected, css: { selected: selected() }"></div>
+					</div>
+				</div>
+				<div class="winner-message hidden">You won!</div>
+			</section>
+			<section>
+				<h2>Instructions</h2>
+				<p>Select the number of pairs by using the drop-down box.  Then match symbols until the cards are all gone.</p>
+			</section>
 		</main>
+		<footer>
+			<h3><a href="http://ikisler.github.io/portfolio/">by Isabeau Kisler</a></h3>
+		</footer>
 
 	<script src="js/knockout-3.3.0.js"></script>
 	<script src="js/app.js"></script>

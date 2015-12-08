@@ -1,39 +1,75 @@
+/*** General Set Up ***/
+body {
+  font-family: arial, sans-serif;
+  margin: 0 auto; }
+
+header, main, footer {
+  padding: 10px 20px; }
+
+header, footer {
+  background-color: #444;
+  color: #fff; }
+
+/*** Header ***/
+header {
+  text-align: center; }
+
+h1 {
+  font-size: 2.5em; }
+
+/*** Main ***/
+.game-container {
+  margin: 20px auto; }
+
+.cards-left, .number-selector-container {
+  display: inline-block; }
+
+.cards-left {
+  font-weight: bold;
+  width: 50%; }
+
+select {
+  font-size: 1em;
+  padding: 4px;
+  border-radius: 5px; }
+
+/*** Footer ***/
+footer {
+  text-align: right; }
+
+a {
+  color: #fff; }
+
+/*** Cards ***/
 .fa {
-	font-size: 2.2em;
-}
+  font-size: 2.2em; }
 
 .card-container {
-	position: relative;
-	display: inline-block;
-	margin: 5px;
-}
+  position: relative;
+  display: inline-block;
+  margin: 5px; }
 
 .front {
-	color: #aaa;
-	width: 80px;
-	height: 120px;
-	background-color: #aaa;
-	position: absolute;
-	top: 0;
-	left: 0;
-	-webkit-transition: opacity 0.5s;
-	transition: opacity 0.5s;
-}
+  width: 80px;
+  height: 120px;
+  background-color: #aaa;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s; }
 
 .back {
-	width: 78px;
-	height: 118px;
-	text-align: center;
-	line-height: 118px;
-	border: solid 1px #000;
-}
+  width: 78px;
+  height: 118px;
+  text-align: center;
+  line-height: 118px;
+  border: solid 1px #000; }
 
 .selected {
-	color: #000;
-	background-color: #0a0;
-	opacity: 0;
-}
+  opacity: 0; }
 
 .hidden {
-	display: none;
-}
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */

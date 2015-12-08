@@ -8,7 +8,6 @@ var Card = function(num, hexColor, iconSelected) {
 		that.icon = iconSelected;
 		that.selected = ko.observable(false);
 		that.select = function() {
-				//console.log(that.num() + " selected");
 				that.selected(true);
 		};
 		that.unselect = function() {
@@ -64,6 +63,7 @@ var ViewModel = function() {
 	var that = this;
 	this.maxNumOfPairs = 50;
 	this.numberOfPairsArray = [];
+
 	// Put all the options for the number of pairs into the array
 	for(var j=1; j<=that.maxNumOfPairs; j++) {
 		that.numberOfPairsArray.push(j);
@@ -77,6 +77,9 @@ var ViewModel = function() {
 	});
 
 	this.initial = function() {
+		// Hide the winner message
+		document.getElementsByClassName('winner-message')[0].className += ' hidden';
+
 		// Remove all the cards current in the array
 		that.cards.removeAll();
 
@@ -98,40 +101,38 @@ var ViewModel = function() {
 	this.checkSelected = function(card) {
 			var cardsSelected = [];
 
-			//console.log(card);
 			card.select();
 
+			// Sort through all the cards and add them to the cardsSelected array.
 			for(var i=0; i<that.cards().length; i++) {
-
-					//console.log(that.cards()[i].selected());
-
-					
 					if(that.cards()[i].selected()) {
 							cardsSelected.push(that.cards()[i].num());
 					}
 
 			}
 
+			// If there are more than two selected, deselect them all
 			if(cardsSelected.length > 2) {
 					that.deSelectAll();
+					return false;
 			}
 
+			// If there are less than two selected, then don't do anything
 			if(cardsSelected.length < 2) {
 					return false;
 			}
 
+			// If the cards match, remove those cards from the cards array
 			if(cardsSelected[0] === cardsSelected[1]) {
-					console.log("matched");
 					setTimeout(function(){
 							that.removeCards(cardsSelected[0]);
 
 							// If there are no more cards, reveal the winner message
 							if(that.cards().length === 0) {
-									document.getElementsByClassName('winner-message')[0].className = document.getElementsByClassName('winner-message')[0].className.replace('hidden', '');
+								document.getElementsByClassName('winner-message')[0].className = document.getElementsByClassName('winner-message')[0].className.replace(/hidden/g, '');
 							}
 					}, 400);
 			} else {
-					console.log("unmatched");
 					setTimeout(function(){
 							that.deSelectAll();
 					}, 400);
