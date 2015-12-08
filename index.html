@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<main>
+			<div>Cards Left: <span data-bind="text: cards().length"></span></div>
 			<div class="game-container" data-bind="foreach: cards">
 				<div class="card-container">
 					<div class="back" data-bind="style: { color: color }, css: icon"></div>
@@ -17,6 +18,9 @@
 				</div>
 			</div>
 			<div class="winner-message hidden">You won!</div>
+			<div class="number-selector-container">
+				<select data-bind="options: $root.numberOfPairsArray, optionsCaption: 'Number of Pairs', value: $root.numberOfPairs"></select>
+			</div>
 		</main>
 
 	<script src="js/knockout-3.3.0.js"></script>
