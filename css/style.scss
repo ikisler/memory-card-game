@@ -1,10 +1,12 @@
-$basicFont: arial, sans-serif;
+$basicFont: 1.5em 'Press Start 2P', 'VT323', arial, sans-serif;
 
 $headerBgColor: #444;
 $headerTextColor: #fff;
-$headerSize: 2.5em;
+$headerSize: 2.8em;
 
 $linkColor: #fff;
+
+$winnerMessageFontSize: 2em;
 
 $cardHeight: 120px;
 $cardWidth: 80px;
@@ -18,7 +20,7 @@ $sectionsPadding: 10px 20px;
 
 /*** General Set Up ***/
 body {
-	font-family: $basicFont;
+	font: $basicFont;
 	margin: $centerMargin;
 }
 
@@ -55,7 +57,7 @@ h1 {
 }
 
 select {
-	font-size: 1em;
+	font-size: 0.8em;
 	padding: 4px;
 	border-radius: 5px;
 }
@@ -67,6 +69,12 @@ footer {
 
 a {
 	color: $linkColor;
+}
+
+.winner-message {
+	font-size: $winnerMessageFontSize;
+	text-align: center;
+	padding: $sectionsPadding;
 }
 
 /*** Cards ***/
