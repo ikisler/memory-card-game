@@ -1,4 +1,7 @@
 /*** General Set Up ***/
+html, body {
+  height: 100%; }
+
 body {
   font: 1.5em "Press Start 2P", "VT323", arial, sans-serif;
   margin: 0 auto; }
@@ -12,12 +15,17 @@ header, footer {
 
 /*** Header ***/
 header {
-  text-align: center; }
+  text-align: center;
+  height: 157px; }
 
 h1 {
   font-size: 2.8em; }
 
 /*** Main ***/
+main {
+  min-height: 72%;
+  margin: 0 auto -104px; }
+
 .game-container {
   margin: 20px auto; }
 
@@ -35,7 +43,8 @@ select {
 
 /*** Footer ***/
 footer {
-  text-align: right; }
+  text-align: right;
+  height: 104px; }
 
 a {
   color: #fff; }

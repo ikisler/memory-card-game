@@ -3,6 +3,7 @@ $basicFont: 1.5em 'Press Start 2P', 'VT323', arial, sans-serif;
 $headerBgColor: #444;
 $headerTextColor: #fff;
 $headerSize: 2.8em;
+$headerHeight: 157px;
 
 $linkColor: #fff;
 
@@ -18,7 +19,13 @@ $cardTransition:  opacity 0.5s;
 $centerMargin: 0 auto;
 $sectionsPadding: 10px 20px;
 
+$footerHeight: 104px;
+
 /*** General Set Up ***/
+html, body {
+	height: 100%
+}
+
 body {
 	font: $basicFont;
 	margin: $centerMargin;
@@ -36,6 +43,7 @@ header, footer {
 /*** Header ***/
 header {
 	text-align: center;
+	height: $headerHeight;
 }
 
 h1 {
@@ -43,6 +51,11 @@ h1 {
 }
 
 /*** Main ***/
+main {
+	min-height: 72%;
+	margin: 0 auto (-$footerHeight);
+}
+
 .game-container {
 	margin: 20px auto;
 }
@@ -65,6 +78,7 @@ select {
 /*** Footer ***/
 footer {
 	text-align: right;
+	height: $footerHeight;
 }
 
 a {
