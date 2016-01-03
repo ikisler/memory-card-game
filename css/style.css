@@ -16,15 +16,14 @@ header, footer {
 /*** Header ***/
 header {
   text-align: center;
-  height: 157px; }
+  min-height: 157px; }
 
 h1 {
   font-size: 2.8em; }
 
 /*** Main ***/
 main {
-  min-height: 72%;
-  margin: 0 auto -104px; }
+  min-height: 50%; }
 
 .game-container {
   margin: 20px auto; }

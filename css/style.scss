@@ -43,7 +43,7 @@ header, footer {
 /*** Header ***/
 header {
 	text-align: center;
-	height: $headerHeight;
+	min-height: $headerHeight;
 }
 
 h1 {
@@ -52,8 +52,7 @@ h1 {
 
 /*** Main ***/
 main {
-	min-height: 72%;
-	margin: 0 auto (-$footerHeight);
+	min-height: 50%;
 }
 
 .game-container {
